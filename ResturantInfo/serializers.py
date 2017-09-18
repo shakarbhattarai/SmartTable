@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from snippets.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
+from ResturantInfo.models import ResturantInfo, LANGUAGE_CHOICES, STYLE_CHOICES
 
 
 class SnippetSerializer(serializers.Serializer):
@@ -14,16 +14,18 @@ class SnippetSerializer(serializers.Serializer):
         """
         Create and return a new `Snippet` instance, given the validated data.
         """
-        return Snippet.objects.create(**validated_data)
-    
+        return ResturantInfo.objects.create(**validated_data)
+
     def update(self, instance, validated_data):
         """
         Update and return an existing `Snippet` instance, given the validated data.
         """
-        instance.title = validated_data.get('title', instance.title)
-        instance.code = validated_data.get('code', instance.code)
-        instance.linenos = validated_data.get('linenos', instance.linenos)
-        instance.language = validated_data.get('language', instance.language)
-        instance.style = validated_data.get('style', instance.style)
+        instance.CreatedAt = validated_data.get('CreatedAt', instance.CreatedAt)
+        instance.ResturantName = validated_data.get('ResturantName', instance.ResturantName)
+        instance.OwnerName = validated_data.get('OwnerName', instance.OwnerName)
+        instance.District = validated_data.get('District', instance.District)
+        instance.Address = validated_data.get('Address', instance.Address)
+        instance.Trial = validated_data.get('Trial', instance.Trial)
+
         instance.save()
         return instance

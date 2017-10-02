@@ -1,3 +1,4 @@
+from ResturantInfo import views
 """ResturantHome URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -18,4 +19,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^resturants/$', views.ResturantLists),
+    url(r'^resturants/(?P<pk>[0-9]+)/$', views.Resturant_Details),
 ]

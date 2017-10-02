@@ -15,5 +15,8 @@ class ResturantInfo(models.Model):
     Address=models.CharField(max_length=50, blank=True, default='Baneshwor')
     Trial = models.BooleanField(default=True)
 
+    def __unicode__(self):
+        return self.ResturantName
     class Meta:
         ordering = ('CreatedAt',)
+
